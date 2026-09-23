@@ -1,13 +1,19 @@
-export function londonMonthDay(now: Date = new Date()): string {
+export function londonISODate(now: Date = new Date()): string {
   const parts = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Europe/London",
+    year: "numeric",
     month: "2-digit",
     day: "2-digit",
   }).formatToParts(now);
+  const year = parts.find((part) => part.type === "year")?.value;
   const month = parts.find((part) => part.type === "month")?.value;
   const day = parts.find((part) => part.type === "day")?.value;
-  if (!month || !day) throw new Error("Could not read the London calendar date");
-  return `${month}-${day}`;
+  if (!year || !month || !day) throw new Error("Could not read the London calendar date");
+  return `${year}-${month}-${day}`;
+}
+
+export function londonMonthDay(now: Date = new Date()): string {
+  return londonISODate(now).slice(5);
 }
 
 export function editionKey(month: number, day: number): string {

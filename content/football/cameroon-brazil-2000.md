@@ -10,6 +10,7 @@ eventDate: "2000-09-23"
 calendarMonth: 9
 calendarDay: 23
 published: true
+publishOn: "2026-09-23"
 briefing: ""
 readingTime:
 players: []

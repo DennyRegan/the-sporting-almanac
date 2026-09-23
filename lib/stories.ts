@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { editionKey } from "./dates";
+import { editionKey, londonISODate } from "./dates";
 
 export type Sport = "football" | "boxing";
 
@@ -16,6 +16,7 @@ export type Story = {
   calendarMonth: number;
   calendarDay: number;
   published: boolean;
+  publishOn: string;
   briefing: string;
   body: string;
   readingTime: number | null;
@@ -46,6 +47,7 @@ function readStory(filePath: string, sport: Sport): Story {
   const { data, content } = matter(fs.readFileSync(filePath, "utf8"));
   const slug = stringValue(data.slug) || path.basename(filePath, ".md");
   const eventDate = stringValue(data.eventDate);
+  const publishOn = stringValue(data.publishOn);
   const calendarMonth = Number(data.calendarMonth);
   const calendarDay = Number(data.calendarDay);
 
@@ -59,6 +61,16 @@ function readStory(filePath: string, sport: Sport): Story {
   if (date.getUTCFullYear() !== eventYear || date.getUTCMonth() + 1 !== eventMonth || date.getUTCDate() !== eventDay ||
       eventMonth !== calendarMonth || eventDay !== calendarDay) {
     throw new Error(`eventDate and calendar date must match: ${filePath}`);
+  }
+  if (data.published === true) {
+    const [releaseYear, releaseMonth, releaseDay] = publishOn.split("-").map(Number);
+    const releaseDate = new Date(Date.UTC(releaseYear, releaseMonth - 1, releaseDay));
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(publishOn) ||
+        releaseDate.getUTCFullYear() !== releaseYear || releaseDate.getUTCMonth() + 1 !== releaseMonth ||
+        releaseDate.getUTCDate() !== releaseDay ||
+        releaseMonth !== calendarMonth || releaseDay !== calendarDay) {
+      throw new Error(`publishOn must be a valid release date matching the calendar date: ${filePath}`);
+    }
   }
 
   const body = content.trim();
@@ -76,6 +88,7 @@ function readStory(filePath: string, sport: Sport): Story {
     calendarMonth,
     calendarDay,
     published: data.published === true,
+    publishOn,
     briefing: stringValue(data.briefing),
     body,
     readingTime: body ? (Number.isFinite(explicitTime) && explicitTime > 0 ? Math.ceil(explicitTime) : Math.max(1, Math.ceil(words / 220))) : null,
@@ -92,7 +105,7 @@ function readStory(filePath: string, sport: Sport): Story {
   };
 }
 
-export function getStories(): Story[] {
+export function getStories(now: Date = new Date()): Story[] {
   const stories = sports.flatMap((sport) => {
     const folder = path.join(contentRoot, sport);
     if (!fs.existsSync(folder)) return [];
@@ -108,17 +121,19 @@ export function getStories(): Story[] {
     slugs.add(story.slug);
     ids.add(story.id);
   }
-  return stories.filter((story) => story.published).sort((a, b) => a.order - b.order || a.eventDate.localeCompare(b.eventDate));
+  const londonToday = londonISODate(now);
+  return stories.filter((story) => story.published && story.publishOn <= londonToday)
+    .sort((a, b) => a.order - b.order || a.eventDate.localeCompare(b.eventDate));
 }
 
-export function getEdition(key: string): Story[] {
-  return getStories().filter((story) => editionKey(story.calendarMonth, story.calendarDay) === key);
+export function getEdition(key: string, now: Date = new Date()): Story[] {
+  return getStories(now).filter((story) => editionKey(story.calendarMonth, story.calendarDay) === key);
 }
 
-export function getEditionKeys(): string[] {
-  return [...new Set(getStories().map((story) => editionKey(story.calendarMonth, story.calendarDay)))].sort((a, b) => b.localeCompare(a));
+export function getEditionKeys(now: Date = new Date()): string[] {
+  return [...new Set(getStories(now).map((story) => editionKey(story.calendarMonth, story.calendarDay)))].sort((a, b) => b.localeCompare(a));
 }
 
-export function getArticle(slug: string): Story | undefined {
-  return getStories().find((story) => story.slug === slug && Boolean(story.body));
+export function getArticle(slug: string, now: Date = new Date()): Story | undefined {
+  return getStories(now).find((story) => story.slug === slug && Boolean(story.body));
 }

@@ -3,6 +3,7 @@ import { displayDay, parseEditionKey } from "@/lib/dates";
 import { getEditionKeys } from "@/lib/stories";
 
 export const metadata = { title: "Previous Editions" };
+export const dynamic = "force-dynamic";
 
 export default function PreviousPage() {
   const dates = getEditionKeys();
