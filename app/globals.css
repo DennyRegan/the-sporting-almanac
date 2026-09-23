@@ -1,0 +1,40 @@
+:root{color-scheme:light;--paper:#f8f6f0;--ink:#202a27;--muted:#63706a;--line:#d8d9d0;--accent:#994f32}
+*{box-sizing:border-box}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.site-shell{min-height:100vh;max-width:1100px;margin:0 auto;padding:0 max(22px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left))}
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--ink);min-height:76px}
+.brand{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:1.31rem;line-height:1.15;letter-spacing:-.045em;white-space:nowrap}
+.brand-mark{color:var(--accent)}
+.main-nav{display:flex;align-items:center;gap:24px;font-size:.72rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
+.main-nav a{display:inline-flex;align-items:center;min-height:44px}
+.main-nav a:hover,.text-link:hover,.edition-list a:hover,.more-stories a:hover{text-decoration:underline;text-underline-offset:4px}
+main{max-width:760px;margin:0 auto}
+.edition-heading{padding:46px 0 35px;border-bottom:1px solid var(--line)}
+.eyebrow,.section-title{margin:0;color:var(--accent);font-size:.76rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.today-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-left:8px;vertical-align:2px}
+h1,h2,h3,p{overflow-wrap:break-word}
+.edition-heading h1,.article-heading h1{font-family:Georgia,'Times New Roman',serif;letter-spacing:-.055em;font-weight:700}
+.edition-heading h1{font-size:clamp(3.5rem,10vw,5.4rem);line-height:1.02;margin:17px 0 13px}
+.edition-summary{font-family:Georgia,'Times New Roman',serif;color:var(--muted);font-size:1.12rem;line-height:1.45;margin:0}
+.sport-section{padding-top:36px}
+.section-title{color:var(--ink);padding-bottom:15px;border-bottom:2px solid var(--ink)}
+.story-summary{padding:28px 0 30px;border-bottom:1px solid var(--line)}
+.story-summary h3{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.65rem,5vw,2.1rem);line-height:1.16;letter-spacing:-.035em;margin:0 0 11px;max-width:650px}
+.story-date,.article-date,.reading-time{margin:0;color:var(--muted);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.briefing,.briefing-pending{font-family:Georgia,'Times New Roman',serif;font-size:1.12rem;line-height:1.55;margin:17px 0 0;max-width:650px}
+.briefing-pending{color:var(--muted)}
+.pending-note{display:block;font-family:Arial,Helvetica,sans-serif;font-size:.73rem;line-height:1.4;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-top:10px}
+.text-link{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;min-height:44px}
+.story-link{margin-top:12px}
+.empty-edition{padding:34px 0}.empty-edition p{font-family:Georgia,'Times New Roman',serif;font-size:1.2rem;line-height:1.5}
+.previous-page .edition-heading{margin-bottom:14px}.previous-page .edition-heading h1{font-size:clamp(2.9rem,9vw,4.8rem)}
+.edition-list{list-style:none;padding:0;margin:0}.edition-list li{border-bottom:1px solid var(--line)}.edition-list a{display:flex;justify-content:space-between;gap:12px;align-items:center;min-height:74px;font-family:Georgia,'Times New Roman',serif;font-size:1.55rem}.edition-list a span:last-child{color:var(--accent);font-family:Arial,Helvetica,sans-serif;font-size:1rem}
+.article-page{max-width:690px;margin:0 auto}.article-heading{padding:48px 0 28px;border-bottom:1px solid var(--line)}.article-date{margin-top:14px}.article-heading h1{font-size:clamp(2.8rem,8vw,4.75rem);line-height:1.07;margin:21px 0 0}.standfirst{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.25rem,3.6vw,1.5rem);line-height:1.45;color:var(--muted);margin:20px 0 0}.reading-time{margin-top:23px}
+.article-body{font-family:Georgia,'Times New Roman',serif;font-size:1.16rem;line-height:1.75;padding:18px 0 28px;max-width:650px}.article-body p{margin:1.2em 0}.article-body h2{font-size:1.75rem;line-height:1.2;margin:1.8em 0 .5em}.article-body a{text-decoration:underline;text-underline-offset:3px;color:var(--accent)}.article-body blockquote{margin:1.5em 0;padding-left:20px;border-left:2px solid var(--accent);color:var(--muted)}.article-body ul,.article-body ol{padding-left:1.4em}.article-body li{margin:.45em 0}
+.article-end{border-top:1px solid var(--line);padding:20px 0}.more-stories{margin-top:18px;border-top:2px solid var(--ink);padding-top:22px}.more-stories h2{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;margin:0 0 10px}.more-stories ul{padding:0;margin:0;list-style:none}.more-stories li{border-bottom:1px solid var(--line);font-family:Georgia,'Times New Roman',serif;font-size:1.25rem;line-height:1.35}.more-stories li a,.more-stories li>span{display:flex;justify-content:space-between;gap:12px;padding:15px 0}.more-stories li>span{color:var(--muted)}.more-stories li a span{color:var(--accent)}
+.site-footer{max-width:760px;margin:70px auto 0;padding:20px 0;border-top:1px solid var(--ink);color:var(--muted);font-size:.72rem;letter-spacing:.03em}
+@media(max-width:560px){.site-header{align-items:flex-start;flex-direction:column;justify-content:center;gap:2px;padding:13px 0 8px}.brand{font-size:1.28rem}.main-nav{gap:26px}.edition-heading{padding:33px 0 27px}.sport-section{padding-top:31px}.story-summary{padding:24px 0 26px}.article-heading{padding:34px 0 25px}.article-body{font-size:1.12rem;line-height:1.7}}
+@media(max-width:350px){.site-shell{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}.edition-heading h1{font-size:3.15rem}.article-heading h1{font-size:2.5rem}}
