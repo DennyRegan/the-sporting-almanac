@@ -1,6 +1,6 @@
 # The Sporting Almanac
 
-A small mobile-first daily football and boxing history site. The seven supplied 23 September stories are present as content files. Their briefings and articles are intentionally blank until approved text is added.
+A small mobile-first daily football and boxing history site. The seven supplied 23 September story files are unpublished because their approved briefings and articles have not been supplied.
 
 Repository: https://github.com/DennyRegan/the-sporting-almanac (`main` branch)
 
@@ -27,7 +27,7 @@ Verify the public website after each deployment. The `.vercel` project link and 
 
 ## Add or edit a story
 
-Create one `.md` file in `content/football/` or `content/boxing/`, or edit one of the seven existing files. Copy an existing file to keep the frontmatter format. Give each story a unique `id` and `slug`. Set `eventDate` to the historical `YYYY-MM-DD`, then set `calendarMonth` and `calendarDay` to the matching month and day. Set `published: true` and `publishOn` to the first `YYYY-MM-DD` when it may become public. The month and day in `publishOn` must match `calendarMonth` and `calendarDay`. A file with `published: false` is omitted. Optional `order` controls position within a sport's list; stories without it sort after numbered stories by event date.
+Create one `.md` file in `content/football/` or `content/boxing/`, or edit one of the seven existing files. Copy an existing file to keep the frontmatter format. Give each story a unique `id` and `slug`. Set `eventDate` to the historical `YYYY-MM-DD`, then set `calendarMonth` and `calendarDay` to the matching month and day. Add an approved `briefing`, then set `published: true` and `publishOn` to the first `YYYY-MM-DD` when it may become public. The month and day in `publishOn` must match `calendarMonth` and `calendarDay`. A file with `published: false` is omitted. Publishing without a briefing fails the build. Optional `order` controls position within a sport's list; stories without it sort after numbered stories by event date.
 
 For example, `content/football/maradona-napoli.md` has `eventDate: "1984-09-23"`, `calendarMonth: 9`, `calendarDay: 23`, and `publishOn: "2026-09-23"`. Its historical year and first publication year serve different purposes. For a story in the 24 September 2026 batch, set `calendarMonth: 9`, `calendarDay: 24`, and `publishOn: "2026-09-24"`, using the story's true historical year in `eventDate`.
 
@@ -55,4 +55,4 @@ To add the website to an iPhone Home Screen, open the public URL in Safari, tap 
 
 ## Current content state
 
-The seven 23 September files contain only the titles, events, dates, and metadata. They deliberately have no briefing or article text. The homepage shows their events with an awaiting-copy note. No article links are shown until approved bodies are pasted in.
+The seven 23 September files contain only the titles, events, dates, and metadata. They deliberately have no briefing or article text, so `published` is `false` for each one. No placeholder stories appear on the public website. No 24–30 September 2026 articles have been added yet.

@@ -9,7 +9,7 @@ event: "Bolivia 0–1 Argentina"
 eventDate: "1973-09-23"
 calendarMonth: 9
 calendarDay: 23
-published: true
+published: false
 publishOn: "2026-09-23"
 briefing: ""
 readingTime:

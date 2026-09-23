@@ -9,7 +9,7 @@ event: "Gerrie Coetzee defeats Michael Dokes"
 eventDate: "1983-09-23"
 calendarMonth: 9
 calendarDay: 23
-published: true
+published: false
 publishOn: "2026-09-23"
 briefing: ""
 readingTime:

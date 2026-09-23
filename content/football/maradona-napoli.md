@@ -9,7 +9,7 @@ event: "Napoli 1–1 Sampdoria"
 eventDate: "1984-09-23"
 calendarMonth: 9
 calendarDay: 23
-published: true
+published: false
 publishOn: "2026-09-23"
 briefing: ""
 readingTime:

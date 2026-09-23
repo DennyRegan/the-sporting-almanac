@@ -9,7 +9,7 @@ event: "Parma 1–0 Napoli"
 eventDate: "1990-09-23"
 calendarMonth: 9
 calendarDay: 23
-published: true
+published: false
 publishOn: "2026-09-23"
 briefing: ""
 readingTime:

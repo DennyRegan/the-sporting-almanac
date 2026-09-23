@@ -63,6 +63,9 @@ function readStory(filePath: string, sport: Sport): Story {
     throw new Error(`eventDate and calendar date must match: ${filePath}`);
   }
   if (data.published === true) {
+    if (!stringValue(data.briefing)) {
+      throw new Error(`A published story needs an approved briefing: ${filePath}`);
+    }
     const [releaseYear, releaseMonth, releaseDay] = publishOn.split("-").map(Number);
     const releaseDate = new Date(Date.UTC(releaseYear, releaseMonth - 1, releaseDay));
     if (!/^\d{4}-\d{2}-\d{2}$/.test(publishOn) ||
